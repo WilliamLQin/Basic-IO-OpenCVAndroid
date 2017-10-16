@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.graphics.SurfaceTexture;
@@ -18,6 +19,7 @@ import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.ImageReader;
+import android.opengl.GLSurfaceView;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.provider.Settings;
@@ -65,23 +67,6 @@ public class MainActivity extends Activity {
                     .replace(R.id.container, Camera2RawFragment.newInstance())
                     .commit();
         }
-
-
-
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Bitmap bitmap = OpenCVProcessing.getOutputBitmap();
-                if (bitmap != null) {
-                    ImageView imageView = findViewById(R.id.imageView);
-
-                    if (imageView != null) {
-                        imageView.setImageBitmap(bitmap);
-                    }
-                }
-
-            }
-        });
 
     }
 

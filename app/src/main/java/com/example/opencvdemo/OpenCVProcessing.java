@@ -45,10 +45,12 @@ public class OpenCVProcessing {
         Mat bgrMat = new Mat(height, width, CvType.CV_8UC4);
         Imgproc.cvtColor(yuvMat, bgrMat, Imgproc.COLOR_YUV2BGR_I420);
 
+        Mat hsvMat = new Mat();
+        Imgproc.cvtColor(bgrMat, hsvMat, Imgproc.COLOR_RGB2HSV);
+
         setOutputBitmap(bgrMatToRgbBitmap(bgrMat));
 
-//        Mat hsvMat = new Mat();
-//        Imgproc.cvtColor(bgrMat, hsvMat, Imgproc.COLOR_RGB2HSV);
+        // TODO: display Mat onto a view
 
 //        // Split HSV into respective channels
 //        List<Mat> hsvChannels = new ArrayList<>();
